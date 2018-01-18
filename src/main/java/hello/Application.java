@@ -24,7 +24,7 @@ public class Application {
         dispatcher.registerListener(new MessageListener());
 
 
-        
+
     }
     @Nullable
     public static IDiscordClient createClient(String token, boolean login) { // Returns a new instance of the Discord client

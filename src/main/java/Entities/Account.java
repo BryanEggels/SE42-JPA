@@ -3,6 +3,7 @@ package Entities;
 import javax.persistence.*;
 
 @Entity
+@DiscriminatorColumn
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Account {
     @Id
@@ -29,5 +30,9 @@ public abstract class Account {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

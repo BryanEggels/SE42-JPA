@@ -2,6 +2,7 @@ package hello;
 
 import Managers.Commandmanager;
 import Managers.Usermanager;
+import Model.Admin;
 import ORM.ORMCommand;
 import ORM.ORMUser;
 import sx.blah.discord.api.events.IListener;
@@ -34,11 +35,9 @@ public class MessageListener implements IListener<MessageEvent>{
                     break;
                 case "getUsers":
                     Usermanager umgr = new Usermanager();
-
-
                     String gebruikers = "Dit zijn onze gebruikers: \n\n";
                     for (ORMUser user: umgr.getAllUsers()) {
-                        gebruikers = gebruikers + user.getName() + "\n";
+                        gebruikers = gebruikers + user.getUsername() + "\n";
                     }
                     event.getMessage().getChannel().sendMessage(gebruikers);
                     break;
@@ -57,6 +56,23 @@ public class MessageListener implements IListener<MessageEvent>{
                         e.printStackTrace();
                     }
                     break;
+                case "jpa":
+                    if (command.getContent().equals("admin")){
+                        Admin admin = new Admin(event.getAuthor().getLongID(),event.getAuthor().getName());
+                        umgr = new Usermanager();
+                        umgr.register(admin);
+                        break;
+                    }
+                    else{
+                        ORMUser user = new ORMUser(event.getAuthor().getLongID(),event.getAuthor().getName());
+                        umgr = new Usermanager();
+                        umgr.register(user);
+                        break;
+                    }
+
+
+
+
             }
         }
     }

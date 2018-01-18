@@ -3,12 +3,11 @@ package Model;
 import Entities.Account;
 import ORM.ORMCommand;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@DiscriminatorValue("admin")
 public class Admin extends Account {
 
     @OneToMany(cascade = CascadeType.PERSIST)

@@ -19,6 +19,5 @@ public class CommandDAO {
 
     public void addCommand(ORMCommand cmd){
         em.persist(cmd);
-
     }
 }

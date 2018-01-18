@@ -1,5 +1,7 @@
 package DAO;
 
+import Entities.Account;
+import Model.Admin;
 import ORM.ORMUser;
 
 import javax.persistence.EntityManager;
@@ -27,5 +29,9 @@ public class UserDAO {
     public ArrayList<ORMUser> getAllUsers(){
         Query q = em.createNamedQuery("User.getAll", ORMUser.class);
         return (ArrayList<ORMUser>) q.getResultList();
+    }
+
+    public void register(Account user){
+        em.merge(user);
     }
 }

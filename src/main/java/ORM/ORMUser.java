@@ -1,9 +1,8 @@
 package ORM;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import Entities.Account;
+
+import javax.persistence.*;
 
 
 @NamedQueries({
@@ -11,33 +10,23 @@ import javax.persistence.NamedQuery;
                 query = "select a from ORMUser as a"),
 
         @NamedQuery(name =  "User.getName",
-        query = "select a from ORMUser as a WHERE a.name = :name")
+        query = "select a from Account as a WHERE a.username = :name")
 })
 
 @Entity
-public class ORMUser {
-    @Id
-    private long id;
-    private String name;
+@DiscriminatorValue("user")
+public class ORMUser extends Account {
+
+
 
     public ORMUser(long id, String name) {
-        this.id = id;
-        this.name = name;
+        super(id, name);
     }
+
 
     public ORMUser() {
     }
 
-    public long getId() {
-        return id;
-    }
 
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
 }

@@ -1,6 +1,7 @@
 package ORM;
 
 
+import Entities.Account;
 import Entities.Commandable;
 
 import javax.persistence.*;
@@ -20,7 +21,7 @@ public class ORMCommand implements Commandable {
     private String content;
 
     @ManyToOne (cascade = CascadeType.MERGE)
-    private ORMUser user;
+    private Account user;
     public ORMCommand() {
     }
 

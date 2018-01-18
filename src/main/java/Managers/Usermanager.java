@@ -2,11 +2,17 @@ package Managers;
 
 import DAO.CommandDAO;
 import DAO.UserDAO;
+import Entities.Account;
+import Model.Admin;
 import ORM.ORMUser;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Usermanager {
     protected EntityManager em = Persistence.createEntityManagerFactory("database").createEntityManager();
@@ -60,6 +66,20 @@ public class Usermanager {
 
         }
         return user;
+    }
+
+    public void register(Account user){
+        UserDAO UserDao = new UserDAO(em);
+        em.getTransaction().begin();
+        try {
+            UserDao.register(user);
+            em.getTransaction().commit();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            em.close();
+        }
 
     }
 }

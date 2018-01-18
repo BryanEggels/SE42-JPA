@@ -43,8 +43,23 @@ public class Usermanager {
         return users;
     }
 
-    public void getUserByName(){
+    public ORMUser getUserByName(String name){
+        UserDAO userDAO = new UserDAO(em);
+        em.getTransaction().begin();
+        ORMUser user = null;
+        try{
+            user = userDAO.getByName(name);
 
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        }
+        finally {
+            em.close();
+
+        }
+        return user;
 
     }
 }

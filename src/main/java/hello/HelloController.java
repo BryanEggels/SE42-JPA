@@ -21,7 +21,7 @@ public class HelloController {
     public User getUser(@RequestParam("username") String username){
         Usermanager umgr = new Usermanager();
         umgr.getAllUsers(); //lijst met alle users
-
+        return null;
     }
 }
 

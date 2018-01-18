@@ -19,6 +19,11 @@ public class UserDAO {
     public ORMUser getByid(int id) {
         return em.find(ORMUser.class,id);
     }
+    public ORMUser getByName(String name){
+        Query q = em.createNamedQuery("User.getName", ORMUser.class);
+        q.setParameter("name", name);
+        return (ORMUser) q.getSingleResult();
+    }
     public ArrayList<ORMUser> getAllUsers(){
         Query q = em.createNamedQuery("User.getAll", ORMUser.class);
         return (ArrayList<ORMUser>) q.getResultList();

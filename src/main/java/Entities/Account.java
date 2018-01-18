@@ -7,33 +7,27 @@ import javax.persistence.*;
 public abstract class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     @Column(unique = true)
     private String username;
-
 
     public Account() {
     }
 
-    public Account(String username) {
+    public Account(long id, String username) {
         this.username = username;
-    }
-
-    public String getUsername() {
-        return username;
+        this.id = id;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(long id) {
+        this.id = id; 
     }
-
-
 }

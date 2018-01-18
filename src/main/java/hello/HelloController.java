@@ -14,8 +14,8 @@ public class HelloController {
     }
 
     @RequestMapping("/user")
-    public User getUser(@RequestParam("id") int id){
-        return new User(id);
+    public User getUser(@RequestParam("username") String username){
+
     }
 }
 

@@ -1,32 +1,30 @@
 package Managers;
 
 import DAO.CommandDAO;
-import ORM.ORMCommand;
+import DAO.UserDAO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 
-public class Commandmanager {
-
-
-    //private  EntityManagerFactory emf = Persistence.createEntityManagerFactory("database");
-
+public class Usermanager {
     protected EntityManager em = Persistence.createEntityManagerFactory("database").createEntityManager();
 
+    public void getUserById(int userId) {
 
-    public void addCommand(ORMCommand command){
-
-        CommandDAO cmddao = new CommandDAO(em);
+        UserDAO userDAO = new UserDAO(em);
         em.getTransaction().begin();
         try {
-
-            cmddao.addCommand(command);
+            userDAO.getByid(userId);
             em.getTransaction().commit();
-        }
-        catch (Exception e){
+
+        } catch (Exception e) {
             System.out.println(e.getMessage());
+        } finally {
+            em.close();
         }
+    }
+
+    public void getUserByName(){
 
     }
 }

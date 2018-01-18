@@ -2,6 +2,15 @@ package ORM;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+
+
+@NamedQueries({
+        @NamedQuery(name = "User.getAll",
+                query = "select a from ORMUser as a"),
+
+})
 
 @Entity
 public class ORMUser {
@@ -24,5 +33,9 @@ public class ORMUser {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 }

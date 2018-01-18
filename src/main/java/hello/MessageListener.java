@@ -1,6 +1,7 @@
 package hello;
 
 import Managers.Commandmanager;
+import Managers.Usermanager;
 import ORM.ORMCommand;
 import ORM.ORMUser;
 import sx.blah.discord.api.events.IListener;
@@ -31,7 +32,15 @@ public class MessageListener implements IListener<MessageEvent>{
                 case "meme":
                     //send random thrashmeme
                     break;
+                case "getUsers":
+                    Usermanager umgr = new Usermanager();
 
+
+                    String gebruikers = "Dit zijn onze gebruikers: \n\n";
+                    for (ORMUser user: umgr.getAllUsers()) {
+                        gebruikers = gebruikers + user.getName() + "\n";
+                    }
+                    event.getMessage().getChannel().sendMessage(gebruikers);
             }
 
         }

@@ -19,7 +19,7 @@ public class ORMCommand implements Commandable {
     private String command;
     private String content;
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     private ORMUser user;
     public ORMCommand() {
     }

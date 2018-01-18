@@ -41,9 +41,23 @@ public class MessageListener implements IListener<MessageEvent>{
                         gebruikers = gebruikers + user.getName() + "\n";
                     }
                     event.getMessage().getChannel().sendMessage(gebruikers);
+                    break;
+                case "encrypt":
+                    try {
+                        event.getMessage().getChannel().sendMessage(Encryption.encrypt(command.getContent()));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "decrypt":
+                    try {
+                        System.out.println(command.getContent());
+                        event.getMessage().getChannel().sendMessage(Encryption.decrypt(command.getContent()));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
             }
-
         }
-
     }
 }

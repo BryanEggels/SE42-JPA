@@ -10,6 +10,8 @@ import javax.persistence.NamedQuery;
         @NamedQuery(name = "User.getAll",
                 query = "select a from ORMUser as a"),
 
+        @NamedQuery(name =  "User.getName",
+        query = "select a from ORMUser as a WHERE a.name = :name")
 })
 
 @Entity

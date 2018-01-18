@@ -1,7 +1,9 @@
 package hello;
 
 import Managers.Commandmanager;
+import Managers.Usermanager;
 import ORM.ORMCommand;
+import ORM.ORMUser;
 import com.sun.istack.internal.Nullable;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,6 +24,7 @@ public class Application {
         dispatcher.registerListener(new MessageListener());
 
 
+        
     }
     @Nullable
     public static IDiscordClient createClient(String token, boolean login) { // Returns a new instance of the Discord client

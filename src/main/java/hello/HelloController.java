@@ -18,10 +18,9 @@ public class HelloController {
     }
 
     @RequestMapping("/user")
-    public User getUser(@RequestParam("username") String username){
+    public ORMUser getUser(@RequestParam("username") String username){
         Usermanager umgr = new Usermanager();
-        umgr.getAllUsers(); //lijst met alle users
-        return
+        return umgr.getUserByName(username);
     }
 }
 

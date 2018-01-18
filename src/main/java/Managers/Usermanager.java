@@ -25,7 +25,8 @@ public class Usermanager {
             em.close();
         }
     }
-    public ArrayList<ORMUser> getAllUsers(){
+
+    public ArrayList<ORMUser> getAllUsers() {
 
         UserDAO userDAO = new UserDAO(em);
         ArrayList<ORMUser> users = new ArrayList<>();
@@ -40,5 +41,10 @@ public class Usermanager {
             em.close();
         }
         return users;
+    }
+
+    public void getUserByName(){
+
+
     }
 }

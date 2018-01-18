@@ -14,17 +14,14 @@ public abstract class Account {
     public Account() {
     }
 
-    public Account(long id,String username) {
+    public Account(long id, String username) {
         this.username = username;
         this.id = id;
-
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
-
-
 
     public long getId() {
         return id;
@@ -33,6 +30,4 @@ public abstract class Account {
     public void setId(long id) {
         this.id = id;
     }
-
-
 }

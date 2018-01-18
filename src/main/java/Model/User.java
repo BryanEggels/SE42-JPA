@@ -13,4 +13,11 @@ public class User extends Account {
 
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<ORMCommand> commands;
+
+    public User() {
+    }
+
+    public User(long id, String username) {
+        super(id, username);
+    }
 }
